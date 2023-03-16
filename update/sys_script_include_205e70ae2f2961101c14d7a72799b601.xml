@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_58872_needit.NeedItUilts</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Utils Script Include for the NeedIt application.</description>
+        <name>NeedItUilts</name>
+        <script><![CDATA[var NeedItUilts = Class.create();
+NeedItUilts.prototype = {
+    initialize: function() {
+		gs.info('thpreviateri: chamou');
+    },
+	
+	isDatePast: function(strDate) {
+		var agoraMesmo = new GlideDateTime();
+		var whenSolicitado = new GlideDateTime(strDate);
+
+		if (whenSolicitado.before(agoraMesmo)) {
+			return true;
+		} else {
+			//return false;
+			return this.isDateToday(strDate, agoraMesmo, whenSolicitado);
+		}
+	},
+	
+	isDateToday: function(strDate, agoraMesmo, whenSolicitado) {
+		var hoje = agoraMesmo.getLocalDate();
+		var isHoje = whenSolicitado.getLocalDate();
+		
+		if (hoje.compareTo(isHoje) == 0) {
+			return true;
+		}
+		
+		return false;
+	},
+	
+    type: 'NeedItUilts'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>thiago.previateri</sys_created_by>
+        <sys_created_on>2023-03-16 00:37:26</sys_created_on>
+        <sys_id>205e70ae2f2961101c14d7a72799b601</sys_id>
+        <sys_mod_count>11</sys_mod_count>
+        <sys_name>NeedItUilts</sys_name>
+        <sys_package display_value="NeedIt" source="x_58872_needit">6ead8e780f603200cd674f8ce1050ed1</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</sys_scope>
+        <sys_update_name>sys_script_include_205e70ae2f2961101c14d7a72799b601</sys_update_name>
+        <sys_updated_by>thiago.previateri</sys_updated_by>
+        <sys_updated_on>2023-03-16 00:58:22</sys_updated_on>
+    </sys_script_include>
+</record_update>
